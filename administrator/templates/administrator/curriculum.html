@@ -1,0 +1,141 @@
+{% extends 'administrator/base.html' %}
+
+{% block title %}Curriculum Management | CodeMate AI{% endblock %}
+
+{% block content %}
+
+<h1 class="admin-page-title">Curriculum Management</h1>
+
+<p class="admin-page-subtitle">
+    Manage programming languages, learning levels and topics.
+</p>
+
+{% if not selected_language %}
+
+<!-- Language Selection -->
+
+<div class="row g-4">
+
+    {% for language in languages %}
+
+    <div class="col-md-6 col-xl-4">
+
+        <a href="?language={{ language.slug }}" class="text-decoration-none">
+
+            <div class="admin-card h-100">
+
+                <h3>{{ language.name }}</h3>
+
+                <p class="admin-stat-title">
+                    {{ language.levels.count }} Learning Levels
+                </p>
+
+                <p class="admin-page-subtitle">
+                    Manage {{ language.name }} curriculum and topics.
+                </p>
+
+                <span class="btn btn-primary">
+                    Manage Curriculum
+                </span>
+
+            </div>
+
+        </a>
+
+    </div>
+
+    {% empty %}
+
+    <p>No programming languages available.</p>
+
+    {% endfor %}
+
+</div>
+
+{% else %}
+
+<!-- Selected Language Curriculum -->
+
+<a href="{% url 'curriculum_management' %}" class="btn btn-secondary mb-4">
+    Back to Languages
+</a>
+
+<h2 class="mb-4">{{ selected_language.name }} Curriculum</h2>
+
+{% for level in selected_language.levels.all %}
+
+<div class="admin-card mb-4">
+
+    <div class="d-flex justify-content-between align-items-center">
+
+        <h3>{{ level.name }}</h3>
+
+        <a href="{% url 'add_topic' selected_language.slug level.id %}" class="btn btn-primary">
+            + Add Topic
+        </a>
+
+    </div>
+
+    <div class="table-responsive mt-3">
+
+        <table class="table table-dark table-hover align-middle">
+
+            <thead>
+                <tr>
+                    <th width="10%">Order</th>
+                    <th>Topic</th>
+                    <th width="20%">Actions</th>
+                </tr>
+            </thead>
+
+            <tbody>
+
+                {% for topic in level.topics.all %}
+
+                <tr>
+                    <td>{{ topic.order }}</td>
+                    <td>{{ topic.title }}</td>
+                    <td>
+                        <a href="{% url 'edit_topic' selected_language.slug topic.id %}" class="btn btn-sm btn-primary">
+                            Edit
+                        </a>
+
+                        <form method="POST" action="{% url 'delete_topic' selected_language.slug topic.id %}"
+                            style="display: inline;"
+                            onsubmit="return confirm('Are you sure you want to delete this topic?');">
+
+                            {% csrf_token %}
+
+                            <button type="submit" class="btn btn-sm btn-danger">
+                                Delete
+                            </button>
+
+                        </form>
+                    </td>
+                </tr>
+
+                {% empty %}
+
+                <tr>
+                    <td colspan="3">No topics available.</td>
+                </tr>
+
+                {% endfor %}
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+</div>
+
+{% empty %}
+
+<p>No learning levels available for this language.</p>
+
+{% endfor %}
+
+{% endif %}
+
+{% endblock %}

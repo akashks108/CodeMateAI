@@ -1,0 +1,47 @@
+
+{% extends 'administrator/base.html' %}
+
+{% block title %}Admin Dashboard | CodeMate AI{% endblock %}
+
+{% block content %}
+
+<h1 class="admin-page-title">Admin Dashboard</h1>
+
+<p class="admin-page-subtitle">
+    Welcome to CodeMate AI administration.
+</p>
+
+<!-- Statistics Cards -->
+<div class="row g-4">
+
+    <div class="col-md-6 col-xl-3">
+        <div class="admin-card">
+            <div class="admin-stat-title">Total Students</div>
+            <div class="admin-stat-value">{{ total_students }}</div>
+        </div>
+    </div>
+
+    <div class="col-md-6 col-xl-3">
+        <div class="admin-card">
+            <div class="admin-stat-title">Python Learners</div>
+            <div class="admin-stat-value">0</div>
+        </div>
+    </div>
+
+    <div class="col-md-6 col-xl-3">
+        <div class="admin-card">
+            <div class="admin-stat-title">Java Learners</div>
+            <div class="admin-stat-value">0</div>
+        </div>
+    </div>
+
+    <div class="col-md-6 col-xl-3">
+        <div class="admin-card">
+            <div class="admin-stat-title">Feedback Count</div>
+            <div class="admin-stat-value">0</div>
+        </div>
+    </div>
+
+</div>
+
+{% endblock %}

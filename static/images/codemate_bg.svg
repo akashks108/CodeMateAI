@@ -1,0 +1,144 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" width="1920" height="1080" preserveAspectRatio="xMidYMid slice" xmlns:c2pa="http://c2pa.org/manifest">
+  <defs>
+    <radialGradient id="glow" cx="50%" cy="48%" r="55%">
+      <stop offset="0" stop-color="#2563eb" stop-opacity="0.35"/>
+      <stop offset="0.5" stop-color="#1d4ed8" stop-opacity="0.10"/>
+      <stop offset="1" stop-color="#0a0f1e" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="glow2" cx="100%" cy="100%" r="50%">
+      <stop offset="0" stop-color="#38bdf8" stop-opacity="0.18"/>
+      <stop offset="1" stop-color="#0a0f1e" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="glow3" cx="0%" cy="0%" r="45%">
+      <stop offset="0" stop-color="#6366f1" stop-opacity="0.18"/>
+      <stop offset="1" stop-color="#0a0f1e" stop-opacity="0"/>
+    </radialGradient>
+    <pattern id="dots" width="32" height="32" patternUnits="userSpaceOnUse">
+      <circle cx="2" cy="2" r="1.2" fill="#94a3b8" fill-opacity="0.14"/>
+    </pattern>
+    <linearGradient id="fadeL" x1="0" x2="1">
+      <stop offset="0" stop-color="#0a0f1e" stop-opacity="0"/>
+      <stop offset="1" stop-color="#0a0f1e" stop-opacity="0.85"/>
+    </linearGradient>
+    <linearGradient id="fadeR" x1="1" x2="0">
+      <stop offset="0" stop-color="#0a0f1e" stop-opacity="0"/>
+      <stop offset="1" stop-color="#0a0f1e" stop-opacity="0.85"/>
+    </linearGradient>
+    <filter id="blur"><feGaussianBlur stdDeviation="1.2"/></filter>
+  </defs>
+
+  <!-- base -->
+  <rect width="1920" height="1080" fill="#0a0f1e"/>
+  <rect width="1920" height="1080" fill="url(#dots)"/>
+  <rect width="1920" height="1080" fill="url(#glow)"/>
+  <rect width="1920" height="1080" fill="url(#glow2)"/>
+  <rect width="1920" height="1080" fill="url(#glow3)"/>
+
+  <!-- AI network (left) : nodes and links -->
+  <g stroke="#3b82f6" stroke-opacity="0.22" stroke-width="1.2" fill="none">
+    <path d="M90 180 L260 120 L420 230 L330 380 L150 330 Z"/>
+    <path d="M260 120 L330 380 M90 180 L330 380 M150 330 L420 230"/>
+    <path d="M330 380 L470 520 L280 640 L120 560 L150 330"/>
+    <path d="M470 520 L120 560 M280 640 L330 380"/>
+    <path d="M280 640 L400 800 L200 900 L90 780 L120 560"/>
+    <path d="M400 800 L90 780 M200 900 L280 640"/>
+  </g>
+  <g fill="#60a5fa" fill-opacity="0.55">
+    <circle cx="90" cy="180" r="5"/><circle cx="260" cy="120" r="7"/><circle cx="420" cy="230" r="5"/>
+    <circle cx="330" cy="380" r="8"/><circle cx="150" cy="330" r="5"/><circle cx="470" cy="520" r="6"/>
+    <circle cx="280" cy="640" r="7"/><circle cx="120" cy="560" r="5"/><circle cx="400" cy="800" r="6"/>
+    <circle cx="200" cy="900" r="5"/><circle cx="90" cy="780" r="5"/>
+  </g>
+  <g fill="#93c5fd" fill-opacity="0.9">
+    <circle cx="330" cy="380" r="3"/><circle cx="260" cy="120" r="2.5"/><circle cx="280" cy="640" r="2.5"/>
+  </g>
+
+  <!-- Left code window: Python mistake memory moment -->
+  <g transform="translate(70 380) rotate(-3)" opacity="0.9">
+    <rect width="420" height="250" rx="14" fill="#0f172a" fill-opacity="0.85" stroke="#3b82f6" stroke-opacity="0.35"/>
+    <circle cx="26" cy="24" r="6" fill="#ef4444" fill-opacity="0.8"/>
+    <circle cx="48" cy="24" r="6" fill="#f59e0b" fill-opacity="0.8"/>
+    <circle cx="70" cy="24" r="6" fill="#22c55e" fill-opacity="0.8"/>
+    <text x="100" y="29" font-family="Consolas, 'Courier New', monospace" font-size="13" fill="#64748b">loops.py</text>
+    <line x1="0" y1="44" x2="420" y2="44" stroke="#1e293b"/>
+    <g font-family="Consolas, 'Courier New', monospace" font-size="17">
+      <text x="22" y="82" fill="#475569">1</text>
+      <text x="52" y="82"><tspan fill="#c084fc">for</tspan><tspan fill="#e2e8f0"> i </tspan><tspan fill="#c084fc">in</tspan><tspan fill="#38bdf8"> range</tspan><tspan fill="#e2e8f0">(</tspan><tspan fill="#fbbf24">1</tspan><tspan fill="#e2e8f0">, </tspan><tspan fill="#fbbf24">11</tspan><tspan fill="#e2e8f0">):</tspan></text>
+      <text x="22" y="114" fill="#475569">2</text>
+      <text x="52" y="114"><tspan fill="#e2e8f0">    </tspan><tspan fill="#38bdf8">print</tspan><tspan fill="#e2e8f0">(i)</tspan></text>
+      <text x="22" y="146" fill="#475569">3</text>
+      <text x="22" y="178" fill="#475569">4</text>
+      <text x="52" y="178"><tspan fill="#c084fc">def</tspan><tspan fill="#38bdf8"> total</tspan><tspan fill="#e2e8f0">(nums):</tspan></text>
+      <text x="22" y="210" fill="#475569">5</text>
+      <text x="52" y="210"><tspan fill="#e2e8f0">    </tspan><tspan fill="#c084fc">return</tspan><tspan fill="#e2e8f0"> sum(nums)</tspan></text>
+    </g>
+  </g>
+
+  <!-- AI insight chip (floating, left-center) -->
+  <g transform="translate(120 690) rotate(-3)">
+    <rect width="330" height="74" rx="14" fill="#1e3a8a" fill-opacity="0.55" stroke="#60a5fa" stroke-opacity="0.45"/>
+    <circle cx="36" cy="37" r="16" fill="#2563eb"/>
+    <text x="36" y="43" text-anchor="middle" font-family="Consolas, monospace" font-size="15" font-weight="700" fill="#fff">AI</text>
+    <text x="64" y="32" font-family="Segoe UI, Arial, sans-serif" font-size="14" font-weight="600" fill="#dbeafe">Mistake remembered</text>
+    <text x="64" y="54" font-family="Segoe UI, Arial, sans-serif" font-size="13" fill="#93c5fd">range() stops before the end value</text>
+  </g>
+
+  <!-- Right code window: Java -->
+  <g transform="translate(1430 250) rotate(3)" opacity="0.9">
+    <rect width="440" height="290" rx="14" fill="#0f172a" fill-opacity="0.85" stroke="#3b82f6" stroke-opacity="0.35"/>
+    <circle cx="26" cy="24" r="6" fill="#ef4444" fill-opacity="0.8"/>
+    <circle cx="48" cy="24" r="6" fill="#f59e0b" fill-opacity="0.8"/>
+    <circle cx="70" cy="24" r="6" fill="#22c55e" fill-opacity="0.8"/>
+    <text x="100" y="29" font-family="Consolas, 'Courier New', monospace" font-size="13" fill="#64748b">Main.java</text>
+    <line x1="0" y1="44" x2="440" y2="44" stroke="#1e293b"/>
+    <g font-family="Consolas, 'Courier New', monospace" font-size="16">
+      <text x="22" y="78" fill="#475569">1</text>
+      <text x="52" y="78"><tspan fill="#c084fc">public class</tspan><tspan fill="#fbbf24"> Main</tspan><tspan fill="#e2e8f0"> {</tspan></text>
+      <text x="22" y="108" fill="#475569">2</text>
+      <text x="52" y="108"><tspan fill="#e2e8f0">  </tspan><tspan fill="#c084fc">public static void</tspan><tspan fill="#38bdf8"> main</tspan><tspan fill="#e2e8f0">(...) {</tspan></text>
+      <text x="22" y="138" fill="#475569">3</text>
+      <text x="52" y="138"><tspan fill="#e2e8f0">    </tspan><tspan fill="#c084fc">int</tspan><tspan fill="#e2e8f0">[] nums = {</tspan><tspan fill="#fbbf24">3, 5, 8</tspan><tspan fill="#e2e8f0">};</tspan></text>
+      <text x="22" y="168" fill="#475569">4</text>
+      <text x="52" y="168"><tspan fill="#e2e8f0">    </tspan><tspan fill="#c084fc">for</tspan><tspan fill="#e2e8f0"> (</tspan><tspan fill="#c084fc">int</tspan><tspan fill="#e2e8f0"> n : nums) {</tspan></text>
+      <text x="22" y="198" fill="#475569">5</text>
+      <text x="52" y="198"><tspan fill="#e2e8f0">      System.out.</tspan><tspan fill="#38bdf8">println</tspan><tspan fill="#e2e8f0">(n);</tspan></text>
+      <text x="22" y="228" fill="#475569">6</text>
+      <text x="52" y="228" fill="#e2e8f0">    }</text>
+      <text x="22" y="258" fill="#475569">7</text>
+      <text x="52" y="258" fill="#e2e8f0">  }</text>
+    </g>
+  </g>
+
+  <!-- Progress / mastery chip (right) -->
+  <g transform="translate(1470 600) rotate(3)">
+    <rect width="360" height="120" rx="14" fill="#0f172a" fill-opacity="0.85" stroke="#3b82f6" stroke-opacity="0.35"/>
+    <text x="24" y="34" font-family="Segoe UI, Arial, sans-serif" font-size="14" font-weight="600" fill="#cbd5e1">Mastery</text>
+    <g font-family="Segoe UI, Arial, sans-serif" font-size="12" fill="#94a3b8">
+      <text x="24" y="62">Loops</text>
+      <rect x="90" y="52" width="200" height="8" rx="4" fill="#1e293b"/>
+      <rect x="90" y="52" width="150" height="8" rx="4" fill="#3b82f6"/>
+      <text x="24" y="90">Strings</text>
+      <rect x="90" y="80" width="200" height="8" rx="4" fill="#1e293b"/>
+      <rect x="90" y="80" width="96" height="8" rx="4" fill="#38bdf8"/>
+      <text x="24" y="114">Functions</text>
+    </g>
+    <rect x="90" y="104" width="200" height="8" rx="4" fill="#1e293b"/>
+    <rect x="90" y="104" width="52" height="8" rx="4" fill="#f59e0b"/>
+  </g>
+
+  <!-- floating code symbols -->
+  <g font-family="Consolas, 'Courier New', monospace" fill="#60a5fa" fill-opacity="0.16" font-weight="700">
+    <text x="640" y="140" font-size="72">&lt;/&gt;</text>
+    <text x="1180" y="190" font-size="60">{ }</text>
+    <text x="760" y="960" font-size="64">[ ]</text>
+    <text x="1250" y="930" font-size="68">( )</text>
+    <text x="560" y="1010" font-size="40">;</text>
+    <text x="1620" y="1010" font-size="48">#</text>
+    <text x="1100" y="80" font-size="40">=&gt;</text>
+    <text x="1700" y="150" font-size="44">//</text>
+  </g>
+
+  <!-- vignette edges so the center stays calm for the login card -->
+  <rect x="0" y="0" width="1920" height="1080" fill="none"/>
+  <ellipse cx="960" cy="540" rx="380" ry="420" fill="#0a0f1e" fill-opacity="0.55" filter="url(#blur)"/>
+<metadata><c2pa:manifest>AAAWgmp1bWIAAAAeanVtZGMycGEAEQAQgAAAqgA4m3EDYzJwYQAAABZcanVtYgAAAEdqdW1kYzJtYQARABCAAACqADibcQN1cm46YzJwYTozMzg3ZTNjZi0xYjhmLTRmMTQtODNhYS1mYTgwZWJmMzY2MzYAAAADl2p1bWIAAAApanVtZGMyYXMAEQAQgAAAqgA4m3EDYzJwYS5hc3NlcnRpb25zAAAAALxqdW1iAAAARGp1bWRjYm9yABEAEIAAAKoAOJtxE2MycGEuaW5ncmVkaWVudC52MwAAAAAYYzJzaPwpFKPtFYeruOWkLsu/kT8AAABwY2JvcqNpZGM6Zm9ybWF0bWltYWdlL3N2Zyt4bWxqaW5zdGFuY2VJRHgseG1wOmlpZDphNzFjMWFmYS0zN2RlLTQ3YjktODUzOS1mNTFhYTE1YTQ3NGRscmVsYXRpb25zaGlwaHBhcmVudE9mAAAB4mp1bWIAAABBanVtZGNib3IAEQAQgAAAqgA4m3ETYzJwYS5hY3Rpb25zLnYyAAAAABhjMnNoB0EbgUuhF2h9Sx+1SmeLfwAAAZljYm9yomdhY3Rpb25zgqJmYWN0aW9ua2MycGEub3BlbmVkanBhcmFtZXRlcnOha2luZ3JlZGllbnRzgaJjdXJseC1zZWxmI2p1bWJmPWMycGEuYXNzZXJ0aW9ucy9jMnBhLmluZ3JlZGllbnQudjNkaGFzaFggWN7UVB8F5ta3nkrApSlGCkOZGz19Ad2UFk1CSDDxOLCkZmFjdGlvbngdY29tLmFudGhyb3BpYy5jbGF1ZGUucHJvdmlkZWRqcGFyYW1ldGVyc6F4H2NvbS5hbnRocm9waWMub3JpZ2luLWNvbmZpZGVuY2VndW5rbm93bmtkZXNjcmlwdGlvbnhmQ2xhdWRlIHByb3ZpZGVkIHRoaXMgZmlsZSBhdCB0aGUgcmVxdWVzdCBvZiBhIHVzZXIgYW5kIG1heSBoYXZlIGNyZWF0ZWQgb3IgbW9kaWZpZWQgdGhlIGZpbGUgY29udGVudHMubXNvZnR3YXJlQWdlbnShZG5hbWVmQ2xhdWRlcmFsbEFjdGlvbnNJbmNsdWRlZPUAAADIanVtYgAAAEBqdW1kY2JvcgARABCAAACqADibcRNjMnBhLmhhc2guZGF0YQAAAAAYYzJzaLMj738XRZh2GPOOWWGA1n8AAACAY2JvcqVjYWxnZnNoYTI1NmNwYWRMAAAAAAAAAAAAAAAAZGhhc2hYIC7sMcAHluI7sMsCPTnSBIcVFK8x2pGacEgDoN4e24vAZG5hbWVuanVtYmYgbWFuaWZlc3RqZXhjbHVzaW9uc4GiZXN0YXJ0GSPUZmxlbmd0aBkeBAAAAj5qdW1iAAAAJ2p1bWRjMmNsABEAEIAAAKoAOJtxA2MycGEuY2xhaW0udjIAAAACD2Nib3KlY2FsZ2ZzaGEyNTZpc2lnbmF0dXJleE1zZWxmI2p1bWJmPS9jMnBhL3VybjpjMnBhOjMzODdlM2NmLTFiOGYtNGYxNC04M2FhLWZhODBlYmYzNjYzNi9jMnBhLnNpZ25hdHVyZWppbnN0YW5jZUlEeCx4bXA6aWlkOmUyNWE5NWJjLTZhMTctNGMwYS1hYTI4LWIxYjkzYWM2NGRhOHJjcmVhdGVkX2Fzc2VydGlvbnODomN1cmx4LXNlbGYjanVtYmY9YzJwYS5hc3NlcnRpb25zL2MycGEuaW5ncmVkaWVudC52M2RoYXNoWCBY3tRUHwXm1reeSsClKUYKQ5kbPX0B3ZQWTUJIMPE4sKJjdXJseCpzZWxmI2p1bWJmPWMycGEuYXNzZXJ0aW9ucy9jMnBhLmFjdGlvbnMudjJkaGFzaFggOa/uOnvFnDvOZRQibIKok2e2g0E438RQGzJszQFSC2WiY3VybHgpc2VsZiNqdW1iZj1jMnBhLmFzc2VydGlvbnMvYzJwYS5oYXNoLmRhdGFkaGFzaFggmEkSF2ZEZ5f7lPOjSNYGC3s3SmgVAJ/uE/guF1jsD6V0Y2xhaW1fZ2VuZXJhdG9yX2luZm+jZG5hbWVvQW50aHJvcGljIEZpbGVzZ3ZlcnNpb25lMS4wLjBrc3BlY1ZlcnNpb25lMi40LjAAABA4anVtYgAAAChqdW1kYzJjcwARABCAAACqADibcQNjMnBhLnNpZ25hdHVyZQAAABAIY2JvctKEWQISogEmGCFZAgowggIGMIIBjaADAgECAhRA5aAK7sI50L64g/oGQgU9Z1UTADAKBggqhkjOPQQDAzBJMRcwFQYDVQQKEw5BbnRocm9waWMsIFBCQzEuMCwGA1UEAxMlQW50aHJvcGljIENvbnRlbnQgQ3JlZGVudGlhbHMgUm9vdCBDQTAeFw0yNjA4MDcxODQzNTZaFw0yODA4MDYxOTQzNTZaMEQxFzAVBgNVBAoTDkFudGhyb3BpYywgUEJDMSkwJwYDVQQDEyBBbnRocm9waWMgQ2xhdWRlIENvbnRlbnQgU2lnbmluZzBZMBMGByqGSM49AgEGCCqGSM49AwEHA0IABJh6CmvLUBgFFNU0vUKlOVtE6djd17L5SuwX0LemFisBM3dkd/3cyjxFA3Qo5S46fX0/ihY0VZ7mfb9KF703t5OjWDBWMA4GA1UdDwEB/wQEAwIHgDAVBgNVHSUEDjAMBgorBgEEAYPoXgIBMAwGA1UdEwEB/wQCMAAwHwYDVR0jBBgwFoAUzlHiBIFOZFsj+OPEz5o+nMHXXMIwCgYIKoZIzj0EAwMDZwAwZAIwMXMdFJ4BetLLVY7ORuE9noqbbAZOZn/aArXyTwFAZfKrPzxF2vPoJNf1+UCdg1XGAjBwX1zd9WGqYkqmL5SFqw1QySjr1zJfpJM9+1rdDwSPLMOPOjKuiXjoU/pUUeG9RwmhY3BhZFkNngAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPZYQA5Z5s1tRrlJ1G5MB6uS8mG9bT6km/G4G7MlprMswQifl30JZk96eaSiGHeZFMn/1I76b5yCarfsBYWvkdLnRck=</c2pa:manifest></metadata></svg>

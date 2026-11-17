@@ -1,0 +1,239 @@
+
+{% extends 'student/base.html' %}
+
+{% block title %}Student Dashboard | CodeMate AI{% endblock %}
+
+{% block content %}
+
+<!-- Main Dashboard -->
+<main class="student-main">
+
+    <!-- Welcome Section -->
+    <section class="welcome-section">
+        <h1>
+            Welcome, {{ request.user.first_name|default:request.user.username }}!
+        </h1>
+
+        <p>
+            Continue your programming journey with CodeMate AI.
+        </p>
+    </section>
+
+    <!-- Programming Languages -->
+    <section class="languages-section">
+
+        <h2>Available Programming Languages</h2>
+
+        <p class="section-description">
+            Choose a programming language and start improving your skills.
+        </p>
+
+        <div class="row g-4">
+
+            <!-- Python -->
+            <div class="col-md-6">
+
+                <div class="language-card">
+
+                    <div class="language-header">
+                        <h3>Python</h3>
+                    
+                    </div>
+
+                    <p class="language-description">
+                        Learn Python programming from basic concepts
+                        to advanced topics through structured lessons
+                        and practical exercises.
+                    </p>
+
+                    <div class="progress-section">
+
+                        <div class="progress-heading">
+                            <span>Your Progress</span>
+                            <span class="progress-status">
+                                Not started
+                            </span>
+                        </div>
+
+                        <div class="progress-track">
+                            <div class="progress-fill python-progress"></div>
+                        </div>
+
+                        <p class="no-progress">
+                            No learning progress available yet.
+                        </p>
+
+                    </div>
+
+                    <a href="{% url 'learning_page' 'python' %}"
+                       class="language-btn">
+                        Start Learning
+                    </a>
+
+                </div>
+
+            </div>
+
+            <!-- Java -->
+            <div class="col-md-6">
+
+                <div class="language-card">
+
+                    <div class="language-header">
+                        <h3>Java</h3>
+        
+                    </div>
+
+                    <p class="language-description">
+                        Develop your Java programming knowledge
+                        through beginner, intermediate and advanced
+                        learning concepts.
+                    </p>
+
+                    <div class="progress-section">
+
+                        <div class="progress-heading">
+                            <span>Your Progress</span>
+                            <span class="progress-status">
+                                Not started
+                            </span>
+                        </div>
+
+                        <div class="progress-track">
+                            <div class="progress-fill java-progress"></div>
+                        </div>
+
+                        <p class="no-progress">
+                            No learning progress available yet.
+                        </p>
+
+                    </div>
+
+                    <a href="{% url 'learning_page' 'java' %}"
+                       class="language-btn">
+                        Start Learning
+                    </a>
+
+                </div>
+
+            </div>
+                        <!-- C -->
+            <div class="col-md-6">
+                <div class="language-card">
+
+                    <div class="language-header">
+                        <h3>C</h3>
+                        
+                    </div>
+
+                    <p class="language-description">
+                        Learn C programming, including fundamentals,
+                        functions, arrays, pointers and memory management.
+                    </p>
+
+                    <div class="progress-section">
+                        <div class="progress-heading">
+                            <span>Your Progress</span>
+                            <span class="progress-status">Not started</span>
+                        </div>
+
+                        <div class="progress-track">
+                            <div class="progress-fill"></div>
+                        </div>
+
+                        <p class="no-progress">
+                            No learning progress available yet.
+                        </p>
+                    </div>
+
+                    <a href="{% url 'learning_page' 'c' %}" class="language-btn">
+                        Start Learning
+                    </a>
+
+                </div>
+            </div>
+
+            <!-- C++ -->
+            <div class="col-md-6">
+                <div class="language-card">
+
+                    <div class="language-header">
+                        <h3>C++</h3>
+                        
+                    </div>
+
+                    <p class="language-description">
+                        Explore C++ programming, object-oriented concepts,
+                        data structures and algorithms.
+                    </p>
+
+                    <div class="progress-section">
+                        <div class="progress-heading">
+                            <span>Your Progress</span>
+                            <span class="progress-status">Not started</span>
+                        </div>
+
+                        <div class="progress-track">
+                            <div class="progress-fill"></div>
+                        </div>
+
+                        <p class="no-progress">
+                            No learning progress available yet.
+                        </p>
+                    </div>
+
+                    <a href="{% url 'learning_page' 'cpp' %}" class="language-btn">
+                        Start Learning
+                    </a>
+
+                </div>
+            </div>
+
+            <!-- PHP -->
+            <div class="col-md-6">
+                <div class="language-card">
+
+                    <div class="language-header">
+                        <h3>PHP</h3>
+                       
+                    </div>
+
+                    <p class="language-description">
+                        Learn PHP syntax, functions, form handling
+                        and server-side web programming.
+                    </p>
+
+                    <div class="progress-section">
+                        <div class="progress-heading">
+                            <span>Your Progress</span>
+                            <span class="progress-status">Not started</span>
+                        </div>
+
+                        <div class="progress-track">
+                            <div class="progress-fill"></div>
+                        </div>
+
+                        <p class="no-progress">
+                            No learning progress available yet.
+                        </p>
+                    </div>
+
+                    <a href="{% url 'learning_page' 'php' %}" class="language-btn">
+                        Start Learning
+                    </a>
+
+                </div>
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- Footer -->
+    <footer class="student-footer">
+        © 2026 CodeMate AI. All rights reserved.
+    </footer>
+
+</main>
+
+{% endblock %}

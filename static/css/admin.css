@@ -1,0 +1,328 @@
+
+:root {
+    --admin-bg: #0b1120;
+    --admin-sidebar: #111a2b;
+    --admin-card: #151e30;
+    --admin-border: #26344d;
+    --admin-primary: #3b82f6;
+    --admin-primary-hover: #2563eb;
+    --admin-text: #e5e7eb;
+    --admin-muted: #94a3b8;
+    --admin-sidebar-width: 250px;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+html,
+body {
+    margin: 0;
+    min-height: 100%;
+    background-color: var(--admin-bg) !important;
+    color: var(--admin-text);
+    font-family: Arial, sans-serif;
+}
+
+body {
+    min-height: 100vh;
+}
+
+/* Main Layout */
+
+.admin-layout {
+    display: flex;
+    min-height: 100vh;
+    background: var(--admin-bg);
+}
+
+/* Sidebar */
+
+.admin-sidebar {
+    width: var(--admin-sidebar-width);
+    min-height: 100vh;
+    background: var(--admin-sidebar);
+    border-right: 1px solid var(--admin-border);
+    padding: 30px 20px;
+    flex-shrink: 0;
+}
+
+.admin-brand {
+    font-size: 24px;
+    font-weight: 700;
+    color: #ffffff;
+    margin-bottom: 45px;
+}
+
+.admin-nav {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.admin-nav a {
+    display: block;
+    padding: 14px 16px;
+    color: var(--admin-muted);
+    text-decoration: none;
+    border-radius: 9px;
+    font-size: 15px;
+    transition: 0.2s;
+}
+
+.admin-nav a:hover {
+    background: #1e293b;
+    color: #ffffff;
+}
+
+.admin-nav a.active {
+    background: var(--admin-primary);
+    color: #ffffff;
+}
+
+/* Logout Button */
+
+.logout-button {
+    display: block;
+    width: 100%;
+    padding: 14px 16px;
+    background: transparent;
+    border: none;
+    color: var(--admin-muted);
+    text-align: left;
+    text-decoration: none;
+    border-radius: 9px;
+    font-size: 15px;
+    font-family: inherit;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.logout-button:hover {
+    background: #1e293b;
+    color: #ffffff;
+}
+
+/* Main Content */
+
+.admin-main {
+    flex: 1;
+    min-width: 0;
+    min-height: 100vh;
+    padding: 40px;
+    background: var(--admin-bg);
+}
+
+.admin-page-title {
+    font-size: 30px;
+    font-weight: 700;
+    color: #ffffff;
+    margin-bottom: 10px;
+}
+
+.admin-page-subtitle {
+    color: var(--admin-muted);
+    font-size: 15px;
+    margin-bottom: 35px;
+}
+
+/* Cards */
+
+.admin-card {
+    background: var(--admin-card);
+    border: 1px solid var(--admin-border);
+    border-radius: 13px;
+    padding: 25px;
+    min-height: 145px;
+    transition: transform 0.2s, border-color 0.2s;
+}
+
+.admin-card:hover {
+    transform: translateY(-4px);
+    border-color: var(--admin-primary);
+}
+
+.admin-stat-title {
+    color: var(--admin-muted);
+    font-size: 15px;
+    font-weight: 500;
+}
+
+.admin-stat-value {
+    color: #ffffff;
+    font-size: 34px;
+    font-weight: 700;
+    margin-top: 18px;
+}
+
+/* Card Accents */
+
+.row > div:nth-child(1) .admin-card {
+    border-top: 3px solid #3b82f6;
+}
+
+.row > div:nth-child(2) .admin-card {
+    border-top: 3px solid #22c55e;
+}
+
+.row > div:nth-child(3) .admin-card {
+    border-top: 3px solid #a78bfa;
+}
+
+.row > div:nth-child(4) .admin-card {
+    border-top: 3px solid #f59e0b;
+}
+
+/* Buttons */
+
+.admin-btn {
+    display: inline-block;
+    background: var(--admin-primary);
+    color: #ffffff;
+    border: none;
+    border-radius: 8px;
+    padding: 11px 18px;
+    text-decoration: none;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.admin-btn:hover {
+    background: var(--admin-primary-hover);
+    color: #ffffff;
+}
+
+/* Tables */
+
+.admin-table {
+    width: 100%;
+    color: var(--admin-text);
+    border-collapse: collapse;
+}
+
+.admin-table th,
+.admin-table td {
+    padding: 15px;
+    border-bottom: 1px solid var(--admin-border);
+    text-align: left;
+}
+
+.admin-table th {
+    color: var(--admin-muted);
+    font-weight: 600;
+}
+
+/* Curriculum Forms */
+
+.admin-form-card {
+    width: 100%;
+    max-width: 750px;
+    margin: 0 auto;
+    background: var(--admin-card);
+    border: 1px solid var(--admin-border);
+    border-radius: 13px;
+    padding: 38px;
+}
+
+.admin-form-group {
+    margin-bottom: 26px;
+}
+
+.admin-form-label {
+    display: block;
+    color: var(--admin-text);
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 11px;
+}
+
+.admin-form-control {
+    display: block;
+    width: 100%;
+    padding: 15px 16px;
+    background: var(--admin-bg);
+    color: var(--admin-text);
+    border: 1px solid var(--admin-border);
+    border-radius: 8px;
+    font-family: inherit;
+    font-size: 16px;
+    outline: none;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.admin-form-control:focus {
+    background: var(--admin-bg);
+    color: #ffffff;
+    border-color: var(--admin-primary);
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.15);
+}
+
+.admin-form-control::placeholder {
+    color: var(--admin-muted);
+    opacity: 1;
+}
+
+.admin-form-control:disabled {
+    background: #1e293b;
+    color: var(--admin-muted);
+    opacity: 1;
+    cursor: not-allowed;
+}
+
+textarea.admin-form-control {
+    min-height: 150px;
+    resize: vertical;
+}
+
+select.admin-form-control option {
+    background: var(--admin-card);
+    color: var(--admin-text);
+}
+
+.admin-form-actions {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+.admin-form-actions .admin-btn,
+.admin-form-actions .btn {
+    font-size: 16px;
+    padding: 12px 22px;
+}
+
+/* Responsive */
+
+@media (max-width: 768px) {
+    .admin-layout {
+        flex-direction: column;
+    }
+
+    .admin-sidebar {
+        width: 100%;
+        min-height: auto;
+        padding: 20px;
+    }
+
+    .admin-brand {
+        margin-bottom: 20px;
+    }
+
+    .admin-nav {
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+
+    .admin-main {
+        padding: 22px;
+    }
+
+    .admin-page-title {
+        font-size: 25px;
+    }
+
+    .admin-form-card {
+        padding: 20px;
+    }
+}

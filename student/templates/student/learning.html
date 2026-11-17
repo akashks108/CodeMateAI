@@ -1,0 +1,681 @@
+{% extends 'student/base.html' %}
+
+{% block title %}{{ language|title }} Learning | CodeMate AI{% endblock %}
+
+{% block content %}
+
+<div class="learning-workspace">
+
+    <!-- Left Side: AI Lessons -->
+    <section class="lesson-panel">
+
+        <div class="panel-header">
+            <h2>AI Learning Assistant</h2>
+            <span class="status">Ready to Learn</span>
+        </div>
+
+        <div class="lesson-content">
+
+            <h3>Welcome to {{ language|title }} Programming</h3>
+
+            <p>
+                Your AI learning assistant will guide you through
+                programming concepts with explanations and examples.
+            </p>
+
+
+            <div class="lesson-content">
+
+                <div class="curriculum-selector">
+
+                    <label for="level-select">Learning Level</label>
+
+                    <!-- Display learning levels and automatically select the student's saved level. -->
+                    <select id="level-select" class="curriculum-dropdown">
+                        {% for level in levels %}
+                        <option value="{{ level.id }}">
+                            {{ level.name }}
+                        </option>
+                        {% empty %}
+                        <option value="">No levels available</option>
+                        {% endfor %}
+                    </select>
+
+                    <label for="topic-select">Select Topic</label>
+
+                    <!-- Display all curriculum topics and associate each topic with its learning level. -->
+                    <!-- Display curriculum topics and provide the student's saved topic ID to JavaScript. -->
+                    <select id="topic-select" class="curriculum-dropdown"
+                        data-current-topic-id="{{ current_topic.id|default:'' }}">
+                        {% for level in levels %}
+                        {% for topic in level.topics.all %}
+                        <option value="{{ topic.id }}" data-level-id="{{ level.id }}">
+                            {{ topic.title }}
+                        </option>
+                        {% endfor %}
+                        {% endfor %}
+                    </select>
+                </div>
+
+                <!-- AI Generated Lesson Display -->
+
+                <div class="lesson-actions">
+                    <button type="button" id="start-learning-btn">
+                        Start Learning
+                    </button>
+                </div>
+
+                <div id="ai-lesson-content" class="ai-lesson-content">
+                    <p>Select a learning topic and click Start Learning.</p>
+                </div>
+
+                <div id="next-practice-content" class="next-practice-content" hidden>
+                </div>
+
+                <div class="practice-actions">
+                    <button type="button" id="next-practice-btn" hidden>
+                        Next Practice
+                    </button>
+                </div>
+
+            </div>
+            <!-- Libraries for formatting AI-generated lessons -->
+            <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+            <script src="https://cdn.jsdelivr.net/npm/dompurify@3.2.6/dist/purify.min.js"></script>
+
+        </div>
+
+    </section>
+
+
+    <!-- Right Side: Code Editor and Output -->
+    <section class="coding-panel">
+
+        <!-- Code Editor -->
+        <div class="editor-panel">
+
+            <div class="panel-header">
+
+                <h2>Code Editor</h2>
+
+                <div class="editor-header-right">
+
+                    <span>{{ language|upper }}</span>
+
+                    <!-- Settings Icon -->
+                    <button type="button" class="settings-button" id="settings-button" title="Editor Settings">
+                        &#9881;
+                    </button>
+
+                    <!-- Settings Dropdown -->
+                    <div class="settings-dropdown" id="settings-dropdown">
+
+                        <h4>Editor Settings</h4>
+
+                        <div class="setting-option">
+                            <label for="font-color">Font Color</label>
+                            <input type="color" id="font-color" value="#e5e7eb">
+                        </div>
+
+                        <div class="setting-option">
+                            <label for="font-size">Font Size</label>
+                            <input type="number" id="font-size" value="14" min="10" max="30">
+                        </div>
+
+                        <div class="setting-option">
+                            <label for="editor-background">
+                                Background Color
+                            </label>
+
+                            <input type="color" id="editor-background" value="#0b1120">
+                        </div>
+
+                        <button type="button" id="reset-editor-settings">
+                            Reset Settings
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- Code Writing Area -->
+            <div id="code-editor"></div>
+
+
+            <!-- Run Button -->
+            <div class="editor-actions">
+
+                <button type="button" id="run-button">
+                    Run Code
+                </button>
+
+            </div>
+
+        </div>
+
+        <!-- Program Input -->
+        <div class="input-panel">
+
+            <h3>Program Input</h3>
+
+            <textarea id="program-input" placeholder="Enter input values here..." rows="4"></textarea>
+
+        </div>
+
+        <form id="csrf-form" hidden>
+            {% csrf_token %}
+        </form>
+
+
+        <!-- Program Output -->
+        <div class="output-panel">
+
+            <h3>Program Output</h3>
+
+            <div class="output-content">
+                <p>Your program output will appear here.</p>
+            </div>
+
+        </div>
+
+
+        <!-- AI Code Review -->
+        <div class="ai-feedback-panel">
+
+            <h3>AI Code Review</h3>
+
+            <div class="feedback-content">
+                <p>
+                    AI feedback, mistakes and suggestions
+                    will appear here.
+                </p>
+            </div>
+
+        </div>
+
+    </section>
+
+</div>
+
+
+<!-- Settings Dropdown JavaScript -->
+
+<script>
+    const settingsButton = document.getElementById('settings-button');
+    const settingsDropdown = document.getElementById('settings-dropdown');
+
+    const codeEditor = document.getElementById('code-editor');
+
+    const fontColor = document.getElementById('font-color');
+    const fontSize = document.getElementById('font-size');
+    const editorBackground = document.getElementById('editor-background');
+
+    const resetButton = document.getElementById('reset-editor-settings');
+
+    // Open and close settings dropdown
+    settingsButton.addEventListener('click', function (event) {
+        event.stopPropagation();
+        settingsDropdown.classList.toggle('show');
+    });
+
+    // Close dropdown when clicking outside
+    document.addEventListener('click', function (event) {
+        if (
+            !settingsDropdown.contains(event.target) &&
+            !settingsButton.contains(event.target)
+        ) {
+            settingsDropdown.classList.remove('show');
+        }
+    });
+
+
+    // Change font color
+    fontColor.addEventListener('input', function () {
+        if (!window.codeEditor) return;
+
+        updateMonacoTheme();
+        saveEditorSettings();
+    });
+
+    // Change font size
+    fontSize.addEventListener('input', function () {
+        const size = Number(this.value);
+
+        if (size >= 10 && size <= 30 && window.codeEditor) {
+            window.codeEditor.updateOptions({
+                fontSize: size
+            });
+
+            saveEditorSettings();
+        }
+    });
+
+    // Change background color
+    editorBackground.addEventListener('input', function () {
+        if (!window.codeEditor) return;
+
+        updateMonacoTheme();
+        saveEditorSettings();
+    });
+
+    // Apply custom font and background colors
+    function updateMonacoTheme() {
+        if (!window.codeEditor) return;
+
+        const foreground = fontColor.value.replace('#', '');
+        const background = editorBackground.value;
+
+        monaco.editor.defineTheme('codemate-custom', {
+            base: 'vs-dark',
+            inherit: false,
+            rules: [
+                {
+                    token: '',
+                    foreground: foreground
+                }
+            ],
+            colors: {
+                'editor.background': background,
+                'editor.foreground': '#' + foreground,
+                'editorLineNumber.foreground': '#64748b',
+                'editorLineNumber.activeForeground': '#ffffff'
+            }
+        });
+
+        monaco.editor.setTheme('codemate-custom');
+    }
+
+
+    // Reset settings
+    resetButton.addEventListener('click', function () {
+        fontColor.value = '#e5e7eb';
+        fontSize.value = 14;
+        editorBackground.value = '#0b1120';
+
+        codeEditor.style.color = '#e5e7eb';
+        codeEditor.style.fontSize = '14px';
+        codeEditor.style.backgroundColor = '#0b1120';
+    });
+    // Separate settings for Python and Java
+    const settingsKey = 'codemate-editor-settings-{{ language }}';
+
+    // Save editor preferences
+    function saveEditorSettings() {
+        const settings = {
+            fontColor: fontColor.value,
+            fontSize: fontSize.value,
+            backgroundColor: editorBackground.value
+        };
+
+        localStorage.setItem(settingsKey, JSON.stringify(settings));
+    }
+    // Load saved editor preferences
+    function loadEditorSettings() {
+
+        const savedSettings = localStorage.getItem(settingsKey);
+
+        if (savedSettings) {
+
+            const settings = JSON.parse(savedSettings);
+
+            fontColor.value = settings.fontColor;
+            fontSize.value = settings.fontSize;
+            editorBackground.value = settings.backgroundColor;
+
+            codeEditor.style.color = settings.fontColor;
+            codeEditor.style.fontSize = settings.fontSize + 'px';
+            codeEditor.style.backgroundColor = settings.backgroundColor;
+
+        }
+
+    }
+
+    // Restore settings when the page opens
+    loadEditorSettings();
+
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.52.2/min/vs/loader.min.js"></script>
+<script>
+    require.config({
+        paths: {
+            vs: 'https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.52.2/min/vs'
+        }
+    });
+
+
+    require(['vs/editor/editor.main'], function () {
+
+        window.codeEditor = monaco.editor.create(
+            document.getElementById('code-editor'),
+            {
+                value: '',
+                language: '{{ language }}',
+                theme: 'vs-dark',
+                automaticLayout: true,
+                fontSize: 14,
+
+                // Line numbers with separator
+                lineNumbers: function (lineNumber) {
+                    return lineNumber + ' )';
+                },
+                lineNumbersMinChars: 5,
+
+                // Gutter spacing
+                glyphMargin: false,
+                lineDecorationsWidth: 8,
+                folding: false,
+
+                // Editor appearance
+                minimap: {
+                    enabled: false
+                },
+
+                scrollBeyondLastLine: false,
+                renderLineHighlight: 'line',
+                roundedSelection: true,
+                tabSize: 4,
+                insertSpaces: true,
+
+                // Disable unnecessary editor decorations
+                renderWhitespace: 'none',
+                guides: {
+                    indentation: false
+                }
+            }
+        );
+
+    });
+
+</script>
+
+
+<script>
+    const runButton = document.getElementById('run-button');
+    const programInput = document.getElementById('program-input');
+    const outputContent = document.querySelector('.output-content');
+
+    runButton.addEventListener('click', async function () {
+
+        if (!window.codeEditor) {
+            outputContent.textContent = 'Editor is still loading. Please wait.';
+            return;
+        }
+
+        const code = window.codeEditor.getValue();
+        const input = programInput.value;
+
+        if (!code.trim()) {
+            outputContent.textContent = 'Please write some code first.';
+            return;
+        }
+
+        const csrfToken = document.querySelector(
+            '#csrf-form [name=csrfmiddlewaretoken]'
+        ).value;
+
+        runButton.disabled = true;
+        runButton.textContent = 'Running...';
+        outputContent.textContent = 'Executing your program...';
+
+        try {
+            const response = await fetch("{% url 'run_code' %}", {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRFToken': csrfToken
+                },
+                body: JSON.stringify({
+                    language: '{{ language }}',
+                    code: code,
+                    input: input
+                })
+            });
+
+            const result = await response.json();
+
+            let output = result.output || '';
+
+            if (result.error) {
+                output += (output ? '\n' : '') + result.error;
+            }
+
+            outputContent.textContent =
+                output || 'Program executed with no output.';
+
+            if (result.time) {
+                outputContent.textContent +=
+                    '\n\nExecution time: ' + result.time + ' seconds';
+            }
+
+        } catch (error) {
+            outputContent.textContent =
+                'Unable to execute the program. Please try again.';
+        } finally {
+            runButton.disabled = false;
+            runButton.textContent = 'Run Code';
+        }
+
+    });
+</script>
+// Filters the topic dropdown to show only topics belonging to the selected learning level.
+
+<script>
+    // Show topics belonging to the selected level while preserving the student's saved topic on the first page load.
+    document.addEventListener('DOMContentLoaded', function () {
+
+        const levelSelect = document.getElementById('level-select');
+        const topicSelect = document.getElementById('topic-select');
+
+        // Remember the topic selected by Django when the page loads.
+        // Read the student's saved topic ID from the HTML.
+        let savedTopicId = topicSelect.dataset.currentTopicId;
+
+        // Find the saved topic and restore its learning level.
+        const savedTopicOption = Array.from(topicSelect.options).find(
+            option => option.value === savedTopicId
+        );
+
+        if (savedTopicOption) {
+            levelSelect.value = savedTopicOption.dataset.levelId;
+        }
+
+        // Filter topics according to the restored learning level.
+        function filterTopics() {
+
+            const selectedLevel = levelSelect.value;
+            let firstAvailableTopic = null;
+            let savedTopic = null;
+
+            Array.from(topicSelect.options).forEach(function (option) {
+
+                const matchesLevel =
+                    option.dataset.levelId === selectedLevel;
+
+                option.hidden = !matchesLevel;
+                option.disabled = !matchesLevel;
+
+                if (matchesLevel && firstAvailableTopic === null) {
+                    firstAvailableTopic = option;
+                }
+
+                if (
+                    matchesLevel &&
+                    option.value === savedTopicId
+                ) {
+                    savedTopic = option;
+                }
+            });
+
+            // Restore the saved topic on the initial page load.
+            if (savedTopic) {
+                savedTopic.selected = true;
+            } else if (firstAvailableTopic) {
+                firstAvailableTopic.selected = true;
+            } else {
+                topicSelect.selectedIndex = -1;
+            }
+
+            topicSelect.disabled = !firstAvailableTopic;
+
+            // Clear the saved selection after the initial filtering.
+            savedTopicId = null;
+        }
+
+        // Save the student's selected topic whenever they change the topic or learning level.
+        async function saveCurrentTopic() {
+
+            const topicId = topicSelect.value;
+
+            if (!topicId) return;
+
+            const csrfToken = document.querySelector(
+                '#csrf-form [name=csrfmiddlewaretoken]'
+            ).value;
+
+            try {
+                const response = await fetch("{% url 'save_current_topic' %}", {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'X-CSRFToken': csrfToken
+                    },
+                    body: JSON.stringify({
+                        topic_id: topicId
+                    })
+                });
+
+                if (!response.ok) {
+                    throw new Error('Unable to save the selected topic.');
+                }
+
+            } catch (error) {
+                console.error('Progress saving error:', error);
+            }
+        }
+
+        // Save the first topic selected when the student changes learning levels.
+        levelSelect.addEventListener('change', function () {
+            filterTopics();
+            saveCurrentTopic();
+        });
+
+        // Save manually selected topics.
+        topicSelect.addEventListener('change', saveCurrentTopic);
+
+        // Apply the saved topic when the page initially loads.
+        filterTopics();
+
+    });
+</script>
+
+<script>
+    // Send the selected curriculum topic to Django and display the AI-generated lesson
+    document.getElementById('start-learning-btn').addEventListener('click', async function () {
+
+        const topicSelect = document.getElementById('topic-select');
+        const lessonContent = document.getElementById('ai-lesson-content');
+        const startButton = this;
+
+        const topicId = topicSelect.value;
+
+        if (!topicId) {
+            lessonContent.textContent = 'Please select a topic first.';
+            return;
+        }
+
+        const csrfToken = document.querySelector(
+            '[name=csrfmiddlewaretoken]'
+        ).value;
+
+        startButton.disabled = true;
+        startButton.textContent = 'Generating Lesson...';
+        lessonContent.textContent = 'AI is preparing your lesson. Please wait...';
+        document.getElementById('next-practice-btn').hidden = true;
+        document.getElementById('next-practice-content').hidden = true;
+
+        try {
+
+            const response = await fetch("{% url 'generate_ai_lesson' %}", {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRFToken': csrfToken
+                },
+                body: JSON.stringify({
+                    topic_id: topicId
+                })
+            });
+
+            const data = await response.json();
+
+            if (!response.ok) {
+                throw new Error(data.error || 'Unable to generate lesson.');
+            }
+
+            // Convert Markdown into safe, formatted HTML before displaying the lesson
+            lessonContent.innerHTML = DOMPurify.sanitize(marked.parse(data.lesson));
+            document.getElementById('next-practice-btn').hidden = false;
+
+        } catch (error) {
+
+            lessonContent.textContent = 'Error: ' + error.message;
+
+        } finally {
+
+            startButton.disabled = false;
+            startButton.textContent = 'Start Learning';
+        }
+
+    });
+    // Generate the next practice question
+    document.getElementById('next-practice-btn').addEventListener('click', async function () {
+
+        const nextButton = this;
+        const topicId = document.getElementById('topic-select').value;
+        const practiceContent = document.getElementById('next-practice-content');
+
+        const csrfToken = document.querySelector('[name=csrfmiddlewaretoken]').value;
+
+        nextButton.disabled = true;
+        nextButton.textContent = 'Generating...';
+
+        practiceContent.hidden = false;
+
+
+        try {
+            const response = await fetch("{% url 'generate_next_practice' %}", {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRFToken': csrfToken
+                },
+                body: JSON.stringify({ topic_id: topicId })
+            });
+
+            const data = await response.json();
+
+            if (!response.ok) {
+                throw new Error(data.error || 'Unable to generate a question.');
+            }
+
+            const newQuestion = DOMPurify.sanitize(
+                marked.parse('### New Practice Question\n\n' + data.question)
+            );
+
+            practiceContent.insertAdjacentHTML('beforeend', newQuestion);
+
+        } catch (error) {
+            practiceContent.textContent = 'Error: ' + error.message;
+        } finally {
+            nextButton.disabled = false;
+            nextButton.textContent = 'Next Practice';
+        }
+    });
+</script>
+
+
+
+{% endblock %}

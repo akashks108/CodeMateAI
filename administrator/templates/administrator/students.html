@@ -1,0 +1,83 @@
+
+{% extends 'administrator/base.html' %}
+
+{% block title %}Students | CodeMate AI{% endblock %}
+
+{% block content %}
+
+<h1 class="admin-page-title">Registered Students</h1>
+
+<p class="admin-page-subtitle">
+    View and manage students registered in CodeMate AI.
+</p>
+
+<div class="admin-card">
+
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h4 class="text-white mb-0">All Students</h4>
+
+        <span class="badge bg-primary">
+            {{ students|length }} Students
+        </span>
+    </div>
+
+    {% if students %}
+
+        <div class="table-responsive">
+
+            <table class="admin-table">
+
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Student Name</th>
+                        <th>Username</th>
+                        <th>Email</th>
+                        <th>Registered Date</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    {% for student in students %}
+                        <tr>
+                            <td>{{ forloop.counter }}</td>
+
+                            <td>
+                                {{ student.get_full_name|default:student.username }}
+                            </td>
+
+                            <td>{{ student.username }}</td>
+
+                            <td>{{ student.email|default:"Not provided" }}</td>
+
+                            <td>{{ student.date_joined|date:"d M Y" }}</td>
+
+                            <td>
+                                <a href="#" class="admin-btn">
+                                    View Profile
+                                </a>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+
+            </table>
+
+        </div>
+
+    {% else %}
+
+        <div class="text-center py-5">
+            <h5 class="text-white">No Students Registered Yet</h5>
+
+            <p style="color: #94a3b8;">
+                Registered student accounts will appear here.
+            </p>
+        </div>
+
+    {% endif %}
+
+</div>
+
+{% endblock %}

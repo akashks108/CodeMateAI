@@ -1,0 +1,87 @@
+
+{% extends 'administrator/base.html' %}
+
+{% block title %}Add Topic | CodeMate AI{% endblock %}
+
+{% block content %}
+
+<h1 class="admin-page-title">Add New Topic</h1>
+
+<p class="admin-page-subtitle">
+    Add a topic to the {{ level.name }} level of {{ level.language.name }}.
+</p>
+
+<div class="admin-form-card">
+
+    {% if error %}
+        <div class="alert alert-danger">
+            {{ error }}
+        </div>
+    {% endif %}
+
+    <form method="POST">
+        {% csrf_token %}
+
+        <div class="admin-form-group">
+            <label class="admin-form-label">
+                Programming Language
+            </label>
+
+            <input
+                type="text"
+                class="admin-form-control"
+                value="{{ level.language.name }}"
+                disabled
+            >
+        </div>
+
+        <div class="admin-form-group">
+            <label class="admin-form-label">
+                Learning Level
+            </label>
+
+            <input
+                type="text"
+                class="admin-form-control"
+                value="{{ level.name }}"
+                disabled
+            >
+        </div>
+
+        <div class="admin-form-group">
+            <label for="title" class="admin-form-label">
+                Topic Title
+            </label>
+
+            <input
+                type="text"
+                name="title"
+                id="title"
+                class="admin-form-control"
+                maxlength="150"
+                placeholder="Enter topic title"
+                required
+            >
+        </div>
+
+
+        <div class="admin-form-actions">
+
+            <button type="submit" class="admin-btn">
+                Add Topic
+            </button>
+
+            <a
+                href="{% url 'curriculum_management' %}?language={{ level.language.slug }}"
+                class="btn btn-secondary"
+            >
+                Cancel
+            </a>
+
+        </div>
+
+    </form>
+
+</div>
+
+{% endblock %}

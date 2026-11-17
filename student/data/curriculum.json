@@ -1,0 +1,276 @@
+
+{
+  "languages": [
+    {
+      "language": "Python",
+      "slug": "python",
+      "levels": [
+        {
+          "name": "Beginner",
+          "order": 1,
+          "topics": [
+            "Introduction to Python",
+            "Variables",
+            "Data Types",
+            "Input and Output",
+            "Operators",
+            "Conditional Statements",
+            "Loops",
+            "Strings",
+            "Lists",
+            "Tuples",
+            "Sets",
+            "Dictionaries"
+          ]
+        },
+        {
+          "name": "Intermediate",
+          "order": 2,
+          "topics": [
+            "Functions",
+            "Recursion",
+            "Lambda Functions",
+            "Modules and Packages",
+            "Exception Handling",
+            "File Handling",
+            "Object-Oriented Programming",
+            "Inheritance",
+            "Polymorphism",
+            "Database Connectivity"
+          ]
+        },
+        {
+          "name": "Advanced",
+          "order": 3,
+          "topics": [
+            "Advanced OOP",
+            "Decorators",
+            "Generators",
+            "Iterators",
+            "Regular Expressions",
+            "Multithreading",
+            "Working with APIs",
+            "Testing and Debugging",
+            "Mini Projects"
+          ]
+        }
+      ]
+    },
+    {
+      "language": "Java",
+      "slug": "java",
+      "levels": [
+        {
+          "name": "Beginner",
+          "order": 1,
+          "topics": [
+            "Introduction to Java",
+            "Java Installation and Setup",
+            "Java Program Structure",
+            "Variables",
+            "Data Types",
+            "Input and Output",
+            "Operators",
+            "Conditional Statements",
+            "Loops",
+            "Arrays"
+          ]
+        },
+        {
+          "name": "Intermediate",
+          "order": 2,
+          "topics": [
+            "Methods",
+            "Strings",
+            "Classes and Objects",
+            "Constructors",
+            "Encapsulation",
+            "Inheritance",
+            "Polymorphism",
+            "Abstraction",
+            "Interfaces",
+            "Exception Handling"
+          ]
+        },
+        {
+          "name": "Advanced",
+          "order": 3,
+          "topics": [
+            "Collections Framework",
+            "Generics",
+            "File Handling",
+            "Multithreading",
+            "Lambda Expressions",
+            "Stream API",
+            "JDBC Database Connectivity",
+            "Packages",
+            "Unit Testing",
+            "Mini Projects"
+          ]
+        }
+      ]
+    },
+    {
+      "language": "C",
+      "slug": "c",
+      "levels": [
+        {
+          "name": "Beginner",
+          "order": 1,
+          "topics": [
+            "Introduction to C",
+            "Structure of a C Program",
+            "Variables",
+            "Data Types",
+            "Input and Output",
+            "Operators",
+            "Conditional Statements",
+            "Loops",
+            "Arrays",
+            "Strings"
+          ]
+        },
+        {
+          "name": "Intermediate",
+          "order": 2,
+          "topics": [
+            "Functions",
+            "Recursion",
+            "Pointers",
+            "Pointer Arithmetic",
+            "Structures",
+            "Unions",
+            "Enumerations",
+            "Dynamic Memory Allocation",
+            "File Handling",
+            "Preprocessor Directives"
+          ]
+        },
+        {
+          "name": "Advanced",
+          "order": 3,
+          "topics": [
+            "Function Pointers",
+            "Pointers to Structures",
+            "Advanced Pointer Concepts",
+            "Bitwise Operations",
+            "Command Line Arguments",
+            "Memory Management",
+            "Header Files",
+            "Modular Programming",
+            "Debugging",
+            "Mini Projects"
+          ]
+        }
+      ]
+    },
+    {
+      "language": "C++",
+      "slug": "cpp",
+      "levels": [
+        {
+          "name": "Beginner",
+          "order": 1,
+          "topics": [
+            "Introduction to C++",
+            "Structure of a C++ Program",
+            "Variables",
+            "Data Types",
+            "Input and Output",
+            "Operators",
+            "Conditional Statements",
+            "Loops",
+            "Arrays",
+            "Strings"
+          ]
+        },
+        {
+          "name": "Intermediate",
+          "order": 2,
+          "topics": [
+            "Functions",
+            "Function Overloading",
+            "Classes and Objects",
+            "Constructors and Destructors",
+            "Encapsulation",
+            "Inheritance",
+            "Polymorphism",
+            "Operator Overloading",
+            "Pointers and References",
+            "Exception Handling"
+          ]
+        },
+        {
+          "name": "Advanced",
+          "order": 3,
+          "topics": [
+            "Templates",
+            "STL Containers",
+            "Iterators",
+            "STL Algorithms",
+            "File Handling",
+            "Smart Pointers",
+            "Lambda Expressions",
+            "Multithreading",
+            "Move Semantics",
+            "Mini Projects"
+          ]
+        }
+      ]
+    },
+    {
+      "language": "PHP",
+      "slug": "php",
+      "levels": [
+        {
+          "name": "Beginner",
+          "order": 1,
+          "topics": [
+            "Introduction to PHP",
+            "PHP Installation and Setup",
+            "PHP Syntax",
+            "Variables",
+            "Data Types",
+            "Constants",
+            "Operators",
+            "Conditional Statements",
+            "Loops",
+            "Arrays"
+          ]
+        },
+        {
+          "name": "Intermediate",
+          "order": 2,
+          "topics": [
+            "Strings",
+            "Functions",
+            "Superglobals",
+            "Form Handling",
+            "GET and POST Methods",
+            "Sessions and Cookies",
+            "File Handling",
+            "Object-Oriented PHP",
+            "Classes and Objects",
+            "Exception Handling"
+          ]
+        },
+        {
+          "name": "Advanced",
+          "order": 3,
+          "topics": [
+            "Inheritance and Polymorphism",
+            "Interfaces and Traits",
+            "Namespaces",
+            "MySQL Database Connectivity",
+            "PDO",
+            "Prepared Statements",
+            "PHP Security",
+            "REST API Development",
+            "Composer and Packages",
+            "Mini Projects"
+          ]
+        }
+      ]
+    }
+  ]
+}

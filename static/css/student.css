@@ -1,0 +1,757 @@
+
+/* =====================================
+   CodeMate AI - Student Common CSS
+===================================== */
+
+:root {
+    --student-bg: #0b1120;
+    --student-sidebar: #111a2b;
+    --student-card: #151e30;
+    --student-border: #26344d;
+    --student-primary: #3b82f6;
+    --student-primary-hover: #2563eb;
+    --student-text: #e5e7eb;
+    --student-muted: #94a3b8;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    min-height: 100%;
+    background: var(--student-bg);
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    background: var(--student-bg);
+    color: var(--student-text);
+    font-family: Arial, sans-serif;
+}
+
+/* =====================================
+   Top Navigation
+===================================== */
+
+.student-navbar {
+    width: 100%;
+    min-height: 75px;
+    padding: 0 5%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: #111a2b;
+    border-bottom: 1px solid var(--student-border);
+}
+
+.student-navbar-brand {
+    color: #ffffff;
+    font-size: 25px;
+    font-weight: 700;
+}
+
+.student-navbar-links {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.student-navbar-links a {
+    color: var(--student-muted);
+    text-decoration: none;
+    padding: 10px 17px;
+    border-radius: 8px;
+    font-size: 15px;
+    transition: 0.2s;
+}
+.student-navbar-links form {
+    margin: 0;
+    display: inline-block;
+}
+
+.student-logout-button {
+    background: transparent;
+    border: none;
+    color: #94a3b8;
+    padding: 10px 16px;
+    font-size: inherit;
+    font-family: inherit;
+    cursor: pointer;
+    border-radius: 8px;
+    transition: 0.2s;
+}
+
+.student-logout-button:hover {
+    background: #1e293b;
+    color: #ffffff;
+}
+
+.student-navbar-links a:hover {
+    background: #1e293b;
+    color: #ffffff;
+}
+
+.student-navbar-links a.active {
+    background: var(--student-primary);
+    color: #ffffff;
+}
+
+/* =====================================
+   Main Content
+===================================== */
+
+.student-main {
+    width: 100%;
+    min-height: calc(100vh - 75px);
+    padding: 45px 5%;
+    background: var(--student-bg);
+}
+
+.welcome-section {
+    margin-bottom: 45px;
+}
+
+.welcome-section h1 {
+    color: #ffffff;
+    font-size: 30px;
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+
+.welcome-section p {
+    color: var(--student-muted);
+    font-size: 15px;
+}
+
+/* =====================================
+   Programming Languages
+===================================== */
+
+.languages-section h2 {
+    color: #ffffff;
+    font-size: 23px;
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+
+.section-description {
+    color: var(--student-muted);
+    margin-bottom: 28px;
+    font-size: 15px;
+}
+
+/* Language Cards */
+
+.language-card {
+    height: 100%;
+    min-height: 310px;
+    padding: 28px;
+    background: var(--student-card);
+    border: 1px solid var(--student-border);
+    border-radius: 13px;
+    transition: transform 0.2s, border-color 0.2s;
+}
+
+.language-card:hover {
+    transform: translateY(-4px);
+    border-color: var(--student-primary);
+}
+
+.language-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 18px;
+}
+
+.language-header h3 {
+    color: #ffffff;
+    font-size: 23px;
+    font-weight: 700;
+    margin: 0;
+}
+
+.language-tag {
+    padding: 6px 12px;
+    border-radius: 6px;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.python-tag {
+    background: rgba(59, 130, 246, 0.15);
+    color: #60a5fa;
+}
+
+.java-tag {
+    background: rgba(245, 158, 11, 0.15);
+    color: #fbbf24;
+}
+
+.language-description {
+    color: var(--student-muted);
+    font-size: 15px;
+    line-height: 1.7;
+    min-height: 75px;
+}
+
+/* =====================================
+   Progress
+===================================== */
+
+.progress-section {
+    margin-top: 25px;
+    margin-bottom: 25px;
+}
+
+.progress-heading {
+    display: flex;
+    justify-content: space-between;
+    color: var(--student-text);
+    font-size: 14px;
+    margin-bottom: 12px;
+}
+
+.progress-status {
+    color: #f59e0b;
+}
+
+.progress-track {
+    width: 100%;
+    height: 8px;
+    background: #26344d;
+    border-radius: 20px;
+    overflow: hidden;
+}
+
+.progress-fill {
+    height: 100%;
+    width: 0%;
+    border-radius: 20px;
+}
+
+.python-progress {
+    background: #3b82f6;
+}
+
+.java-progress {
+    background: #f59e0b;
+}
+
+.no-progress {
+    color: var(--student-muted);
+    font-size: 13px;
+    margin-top: 12px;
+}
+
+/* =====================================
+   Learning Button
+===================================== */
+
+.language-btn {
+    display: inline-block;
+    padding: 12px 20px;
+    background: var(--student-primary);
+    color: #ffffff;
+    text-decoration: none;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 600;
+    transition: 0.2s;
+}
+
+.language-btn:hover {
+    background: var(--student-primary-hover);
+    color: #ffffff;
+}
+
+/* =====================================
+   Footer
+===================================== */
+
+.student-footer {
+    text-align: center;
+    color: #64748b;
+    font-size: 13px;
+    margin-top: 65px;
+    padding-bottom: 20px;
+}
+
+/* =====================================
+   Responsive Design
+===================================== */
+
+@media (max-width: 768px) {
+
+    .student-navbar {
+        padding: 18px 5%;
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .student-navbar-links {
+        width: 100%;
+        flex-wrap: wrap;
+        gap: 5px;
+    }
+
+    .student-navbar-links a {
+        padding: 9px 12px;
+    }
+
+    .student-main {
+        padding: 30px 5%;
+    }
+
+    .welcome-section h1 {
+        font-size: 25px;
+    }
+
+    .language-card {
+        min-height: auto;
+    }
+}
+
+
+/* Learning Workspace */
+
+.learning-workspace {
+    display: grid;
+    grid-template-columns: 40% 60%;
+    gap: 20px;
+    padding: 25px;
+    height: calc(100vh - 75px);
+    min-height: 0;
+    overflow: hidden;
+    background: #0b1120;
+    color: #e5e7eb;
+}
+
+.lesson-panel,
+.editor-panel,
+.output-panel,
+.ai-feedback-panel {
+    background: #151e30;
+    border: 1px solid #26344d;
+    border-radius: 12px;
+    padding: 20px;
+}
+
+.lesson-panel {
+    min-height: 0;
+    height: 100%;
+    overflow-y: auto;
+}
+
+.coding-panel {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    min-height: 0;
+    height: 100%;
+    overflow-y: auto;
+}
+.panel-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.panel-header h2 {
+    font-size: 20px;
+    color: #ffffff;
+}
+
+.status {
+    color: #22c55e;
+    font-size: 13px;
+}
+
+.lesson-content h3 {
+    color: #ffffff;
+    font-size: 19px;
+}
+
+.lesson-content p {
+    color: #94a3b8;
+    line-height: 1.7;
+}
+
+.lesson-placeholder {
+    background: #0b1120;
+    border-radius: 8px;
+    padding: 18px;
+    margin-top: 25px;
+}
+
+.lesson-placeholder h4 {
+    color: #60a5fa;
+}
+
+#code-editor {
+    width: 100%;
+    min-height: 600px;
+    resize: vertical;
+    background: #0b1120;
+    color: #e5e7eb;
+    border: 1px solid #26344d;
+    border-radius: 8px;
+    padding: 15px;
+    font-family: Consolas, monospace;
+    font-size: 14px;
+}
+
+.editor-actions {
+    margin-top: 12px;
+}
+
+#run-button {
+    background: #3b82f6;
+    color: white;
+    border: none;
+    border-radius: 7px;
+    padding: 10px 22px;
+    cursor: pointer;
+}
+
+#run-button:hover {
+    background: #2563eb;
+}
+
+.output-content,
+.feedback-content {
+    background: #0b1120;
+    border-radius: 8px;
+    padding: 15px;
+    min-height: 65px;
+    color: #94a3b8;
+}
+
+.output-panel h3,
+.ai-feedback-panel h3 {
+    color: #ffffff;
+    font-size: 17px;
+}
+
+@media (max-width: 900px) {
+    .learning-workspace {
+        grid-template-columns: 1fr;
+    }
+
+    .lesson-panel {
+        min-height: auto;
+    }
+}
+
+/* Editor Settings */
+
+.editor-header-right {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    position: relative;
+}
+
+.settings-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 34px;
+    height: 34px;
+    background: #1e293b;
+    border: 1px solid #334155;
+    border-radius: 8px;
+    color: #94a3b8;
+    font-size: 19px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.settings-button:hover {
+    background: #263750;
+    border-color: #3b82f6;
+    color: #ffffff;
+    transform: rotate(25deg);
+}
+
+/* Floating Settings Panel */
+
+.settings-dropdown {
+    display: none;
+    position: absolute;
+    top: calc(100% + 12px);
+    right: 0;
+    width: 270px;
+    background: #151e30;
+    border: 1px solid #334155;
+    border-radius: 12px;
+    padding: 20px;
+    z-index: 1000;
+    box-shadow: 0 12px 35px rgba(0, 0, 0, 0.45);
+}
+
+.settings-dropdown.show {
+    display: block;
+    animation: settingsFade 0.2s ease;
+}
+
+@keyframes settingsFade {
+    from {
+        opacity: 0;
+        transform: translateY(-6px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Settings Heading */
+
+.settings-dropdown h4 {
+    color: #ffffff;
+    font-size: 17px;
+    font-weight: 600;
+    margin: 0 0 20px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid #26344d;
+}
+
+/* Individual Settings */
+
+.setting-option {
+    display: flex;
+    flex-direction: column;
+    gap: 9px;
+    margin-bottom: 18px;
+}
+
+.setting-option label {
+    color: #cbd5e1;
+    font-size: 13px;
+    font-weight: 500;
+}
+
+/* Color Picker */
+
+.setting-option input[type="color"] {
+    width: 100%;
+    height: 38px;
+    padding: 4px;
+    background: #0b1120;
+    border: 1px solid #334155;
+    border-radius: 7px;
+    cursor: pointer;
+}
+
+/* Font Size Input */
+
+.setting-option input[type="number"] {
+    width: 100%;
+    padding: 9px 11px;
+    background: #0b1120;
+    color: #ffffff;
+    border: 1px solid #334155;
+    border-radius: 7px;
+    outline: none;
+    font-size: 14px;
+}
+
+.setting-option input:focus {
+    border-color: #3b82f6;
+}
+
+/* Reset Button */
+
+#reset-editor-settings {
+    width: 100%;
+    padding: 10px;
+    background: #263750;
+    color: #e5e7eb;
+    border: 1px solid #334155;
+    border-radius: 7px;
+    font-size: 13px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+#reset-editor-settings:hover {
+    background: #3b82f6;
+    border-color: #3b82f6;
+    color: #ffffff;
+}
+/* Monaco Editor Container */
+
+#code-editor {
+    width: 100%;
+    height: 510px;
+    min-height: 500px;
+    border: 1px solid #26344d;
+    border-radius: 8px;
+    overflow: hidden;
+    background: transparent;
+    padding: 0;
+    resize: none;
+}
+.output-content {
+    white-space: pre-wrap;
+    overflow-wrap: break-word;
+    font-family: Consolas, monospace;
+    line-height: 1.6;
+}
+
+/* Program Input panel */
+.input-panel {
+    background-color: #151f32;
+    border: 1px solid #263750;
+    border-radius: 10px;
+    padding: 16px;
+    margin-bottom: 16px;
+}
+
+/* Program Input heading */
+.input-panel h3 {
+    font-size: 16px;
+    font-weight: 500;
+    color: #ffffff;
+    margin: 0 0 12px 0;
+}
+
+/* Program Input textarea */
+.input-panel textarea {
+    display: block;
+    width: 100%;
+    min-height: 100px;
+    padding: 12px;
+    background-color: #0b1120;
+    color: #e5e7eb;
+    border: 1px solid #334155;
+    border-radius: 8px;
+    font-family: Consolas, monospace;
+    font-size: 14px;
+    line-height: 1.6;
+    resize: vertical;
+    outline: none;
+    box-sizing: border-box;
+}
+
+.input-panel textarea:focus {
+    border-color: #3b82f6;
+}
+
+.input-panel textarea::placeholder {
+    color: #64748b;
+    opacity: 1;
+}
+
+/* Curriculum Selector */
+.curriculum-selector {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 22px;
+    max-width: 450px;
+}
+
+.curriculum-selector label {
+    color: #e2e8f0;
+    font-size: 14px;
+    font-weight: 600;
+    margin-top: 8px;
+}
+
+.curriculum-dropdown {
+    width: 100%;
+    padding: 12px 14px;
+    background-color: #0b1220;
+    color: #e2e8f0;
+    border: 1px solid #334155;
+    border-radius: 7px;
+    font-size: 14px;
+    outline: none;
+    cursor: pointer;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.curriculum-dropdown:hover {
+    border-color: #3b82f6;
+}
+
+.curriculum-dropdown:focus {
+    border-color: #3b82f6;
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.15);
+}
+
+.curriculum-dropdown option {
+    background-color: #111c30;
+    color: #e2e8f0;
+}
+
+/* AI lesson typography */
+#ai-lesson-content {
+    font-size: 17px;
+    line-height: 1.8;
+}
+
+#ai-lesson-content h2 {
+    font-size: 25px;
+    margin-top: 18px;
+    margin-bottom: 10px;
+}
+
+#ai-lesson-content h3 {
+    font-size: 21px;
+    margin-top: 16px;
+    margin-bottom: 8px;
+}
+
+#ai-lesson-content p,
+#ai-lesson-content li {
+    font-size: 17px;
+    line-height: 1.8;
+}
+
+#ai-lesson-content pre {
+    font-size: 15px;
+    padding: 12px;
+    border-radius: 6px;
+    overflow-x: auto;
+}
+
+#ai-lesson-content ul,
+#ai-lesson-content ol {
+    padding-left: 25px;
+}
+/* Start Learning button */
+#start-learning-btn {
+    background: #2563eb;
+    color: #ffffff;
+    border: 1px solid #3b82f6;
+    padding: 7px 14px;
+    border-radius: 5px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s ease, transform 0.2s ease;
+}
+
+#start-learning-btn:hover {
+    background: #1d4ed8;
+    transform: translateY(-1px);
+}
+
+#start-learning-btn:disabled {
+    background: #475569;
+    border-color: #475569;
+    cursor: not-allowed;
+    transform: none;
+}
+#topic-select {
+    margin-bottom: 12px;
+}
